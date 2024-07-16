@@ -38,8 +38,7 @@ if uploaded_file is not None:
 if choice == 'Agregar libro':
     st.subheader('Agregar un nuevo libro')
     with st.form(key='form_agregar'):
-        st.markdown('<label style="color: #FFFDD0;">Título</label>', unsafe_allow_html=True)
-        titulo = st.text_input('', key='titulo')
+        titulo = st.text_input('<label style="color: #FFFDD0;">Título</label>')
         autor = st.text_input('Autor')
         anio = st.number_input('Año', min_value=0, step=1)
         genero = st.text_input('Género')
