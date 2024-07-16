@@ -13,8 +13,7 @@ df = cargar_datos(CSV_FILE)
 add_bg_from_local()
 
 # Título de la aplicación
-st.title('Inventario de Libros')
-
+st.markdown('<h1 style="color: blue;">Inventario de Libros</h1>', unsafe_allow_html=True)
 # Menú de opciones
 menu = ['Agregar libro', 'Eliminar libro', 'Buscar libro', 'Listar libros']
 choice = st.sidebar.selectbox('Menú', menu)
