@@ -13,7 +13,7 @@ df = cargar_datos(CSV_FILE)
 add_bg_from_local()
 
 # Título de la aplicación
-st.markdown('<h1 style="color: blue;">Inventario de Libros</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="color: #FFFDD0;">Inventario de Libros</h1>', unsafe_allow_html=True)
 # Menú de opciones
 menu = ['Agregar libro', 'Eliminar libro', 'Buscar libro', 'Listar libros']
 choice = st.sidebar.selectbox('Menú', menu)
@@ -36,9 +36,9 @@ if uploaded_file is not None:
     st.success("Archivo subido y datos cargados correctamente.")
 
 if choice == 'Agregar libro':
-    st.subheader('Agregar un nuevo libro')
+    st.markdown('<h2 style="color: #FFFDD0;">Agregar un nuevo libro</h2>', unsafe_allow_html=True)
     with st.form(key='form_agregar'):
-        titulo = st.text_input('<label style="color: #FFFDD0;">Título</label>')
+        titulo = st.text_input('Título')
         autor = st.text_input('Autor')
         anio = st.number_input('Año', min_value=0, step=1)
         genero = st.text_input('Género')
