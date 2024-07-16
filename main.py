@@ -1,5 +1,3 @@
-# main.py
-
 import streamlit as st
 import pandas as pd
 from data_handler import cargar_datos, guardar_datos, agregar_libro, eliminar_libro, buscar_libro, listar_libros
@@ -13,7 +11,8 @@ df = cargar_datos(CSV_FILE)
 add_bg_from_local()
 
 # Título de la aplicación
-st.markdown('<h1 style="color: #FFFDD0;">Inventario de Libros</h1>', unsafe_allow_html=True)
+st.title('Inventario de Libros')
+
 # Menú de opciones
 menu = ['Agregar libro', 'Eliminar libro', 'Buscar libro', 'Listar libros']
 choice = st.sidebar.selectbox('Menú', menu)
@@ -36,7 +35,7 @@ if uploaded_file is not None:
     st.success("Archivo subido y datos cargados correctamente.")
 
 if choice == 'Agregar libro':
-    st.markdown('<h2 style="color: #FFFDD0;">Agregar un nuevo libro</h2>', unsafe_allow_html=True)
+    st.subheader('Agregar un nuevo libro')
     with st.form(key='form_agregar'):
         titulo = st.text_input('Título')
         autor = st.text_input('Autor')
@@ -44,7 +43,7 @@ if choice == 'Agregar libro':
         genero = st.text_input('Género')
         isbn = st.text_input('ISBN')
         submit_button = st.form_submit_button(label='Agregar libro')
-        
+
         if submit_button:
             if titulo and autor and genero and isbn:  # Validación de entradas
                 df = agregar_libro(df, titulo, autor, anio, genero, isbn)
@@ -58,7 +57,7 @@ elif choice == 'Eliminar libro':
     with st.form(key='form_eliminar'):
         isbn = st.text_input('ISBN del libro a eliminar')
         submit_button = st.form_submit_button(label='Eliminar libro')
-        
+
         if submit_button:
             if isbn:  # Validación de entrada
                 df = eliminar_libro(df, isbn)
@@ -74,7 +73,7 @@ elif choice == 'Buscar libro':
         campo = st.selectbox('Buscar por', opciones_busqueda)
         valor = st.text_input(f'Ingrese {campo.lower()} del libro a buscar')
         submit_button = st.form_submit_button(label='Buscar libro')
-        
+
         if submit_button:
             if valor:  # Validación de entrada
                 resultado = buscar_libro(df, campo, valor)
